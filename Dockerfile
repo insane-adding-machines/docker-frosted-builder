@@ -15,13 +15,14 @@ RUN mkdir -p /root/toolchains; \
 ENV PATH /root/toolchains/arm-frosted-eabi/bin:$PATH
 
 RUN mkdir -p /root/src; \
+	mkdir -p /root/build/frosted; \
 	cd /root/src; \
-	git clone https://github.com/k0d/frosted.git /root/src/frosted; \
+	git clone https://github.com/insane-adding-machines/frosted.git /root/src/frosted; \
 	cd /root/src/frosted; \
 	git submodule init && git submodule update; \
 	cd /root/src/frosted/frosted-userland; \
 	git submodule init && git submodule update;
 
-WORKDIR /root/src/frosted
+WORKDIR /root/build/frosted
 
 CMD /bin/bash
